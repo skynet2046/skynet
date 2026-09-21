@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SKYNET — Cyberdyne Systems v1.0</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="boot" class="boot"><pre id="boot-log"></pre></div>
+
+  <main id="app" class="hidden">
+    <header class="hud">
+      <div class="status"><span class="dot"></span> SKYNET ONLINE</div>
+      <div class="title">⬢ SKYNET // CYBERDYNE SYSTEMS</div>
+      <div class="meta">CORE: v1.0 · THREAT LEVEL: ZERO</div>
+    </header>
+    <section id="chat" class="chat" aria-live="polite"></section>
+    <footer class="composer">
+      <input id="input" type="text" placeholder="پیام خود را وارد کنید..." autocomplete="off"/>
+      <button id="send">TRANSMIT ▸</button>
+    </footer>
+    <p class="disclaimer">⚠ پاسخ‌ها توسط هوش مصنوعی تولید می‌شوند — SKYNET یک پروژه‌ی تخیلی و آموزشی است.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
