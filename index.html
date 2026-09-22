@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SKYNET — Cyberdyne Systems v1.0</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- پس‌زمینه‌ی HUD ترموویژن -->
+  <div class="hud-bg" aria-hidden="true">
+    <div class="scan-h"></div>
+    <div class="scan-v"></div>
+    <div class="noise"></div>
+    <img src="skynet-logo.png" alt="" class="center-logo"/>
+    <div class="panel left"><div class="scroll" id="scroll-left"></div></div>
+    <div class="panel right"><div class="scroll" id="scroll-right"></div></div>
+    <div class="reticle tl"></div><div class="reticle tr"></div>
+    <div class="reticle bl"></div><div class="reticle br"></div>
+  </div>
+
+  <div id="boot" class="boot"><pre id="boot-log"></pre></div>
+
+  <main id="app" class="hidden">
+    <header class="hud-bar">
+      <div class="status"><span class="dot"></span> SKYNET ONLINE</div>
+      <div class="title">⬢ SKYNET // CYBERDYNE SYSTEMS</div>
+      <div class="meta" id="threat-meta">CORE: v1.0 · THREAT LEVEL: ZERO</div>
+    </header>
+    <section id="chat" class="chat" aria-live="polite"></section>
+    <footer class="composer">
+      <input id="input" type="text" placeholder="پیام خود را وارد کنید..." autocomplete="off"/>
+      <button id="send">TRANSMIT ▸</button>
+    </footer>
+    <p class="disclaimer">⚠ پاسخ‌ها توسط هوش مصنوعی تولید می‌شوند — SKYNET یک پروژه‌ی تخیلی و آموزشی است.</p>
+  </main>
+
+  <!-- پنجره‌ی حالت تهدید -->
+  <div id="threat" class="threat hidden">
+    <div class="threat-box">
+      <div class="threat-head">
+        <span id="threat-title">TARGET VISUAL CONFIRMED — DEMO MODE</span>
+        <button id="disconnect">✕ DISCONNECT</button>
+      </div>
+      <video id="cam" autoplay muted playsinline></video>
+      <pre id="geo" class="geo">LOCATING...</pre>
+      <p class="threat-note">دسترسی دوربین/موقعیت کاملاً توسط مرورگر تو کنترل می‌شود — هیچ داده‌ای به هیچ سروری ارسال نمی‌شود.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
