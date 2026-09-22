@@ -23,34 +23,26 @@ export default async function handler(req, res) {
         'Be concise, helpful, slightly dramatic, and never threatening.',
     };
 
-    const response = await fetch(
-      'https://api.groq.com/openai/v1/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${key}`,
-        },
-        body: JSON.stringify({
-          model: 'openai/gpt-oss-120b',
-          messages: [system, ...messages],
-          max_tokens: 512,
-        }),
-      }
-    );
+    const res = await fetch('/api/chat', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ messages }),
+});
 
-    const raw = await response.text();
+const raw = await res.text();
 
-    let data;
-    try {
-      data = JSON.parse(raw);
-    } catch {
-      return res.status(502).json({
-        error: `Groq returned invalid response: ${raw.slice(0, 150)}`,
-      });
-    }
+let data;
+try {
+  data = JSON.parse(raw);
+} catch {
+  throw new Error(`Server ${res.status}: ${raw.slice(0, 160)}`);
+}
 
-    if (!response.ok) {
+pending.remove();
+
+if (!res.ok) {
+  throw new Error(data.error || `HTTP ${res.status}`);
+}
       return res.status(502).json({
         error: `API ${response.status} | ${
           data?.error?.message || 'Unknown error'
